@@ -123,7 +123,7 @@ export default function HomePage() {
           <nav className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
               <img 
-                src="/logo DIGI.png" 
+                src="/logo-DIGI.png" 
                 alt="Digit Ads Logo" 
                 className="h-12 w-auto object-contain"
               />
@@ -260,7 +260,7 @@ export default function HomePage() {
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
                 <img 
-                  src="/logo DIGI.png" 
+                  src="/logo-DIGI.png" 
                   alt="Digit Ads Logo" 
                   className="h-12 w-auto object-contain"
                 />

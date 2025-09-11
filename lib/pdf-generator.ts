@@ -303,7 +303,7 @@ export async function generateBrandBriefPDF(data: OnboardingData): Promise<Uint8
 }
 
 export function downloadPDF(pdfBytes: Uint8Array, filename: string = 'brand-brief.pdf') {
-  const blob = new Blob([pdfBytes], { type: 'application/pdf' })
+  const blob = new Blob([pdfBytes as BlobPart], { type: 'application/pdf' })
   const url = URL.createObjectURL(blob)
   
   const link = document.createElement('a')

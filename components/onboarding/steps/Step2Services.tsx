@@ -205,7 +205,7 @@ export function Step2Services({ data, onNext, onBack }: Step2ServicesProps) {
             <Button type="button" variant="outline" onClick={onBack} className="border-black text-black hover:bg-black/5">
               ← Atrás
             </Button>
-            <Button type="submit" disabled={!isValid} className="bg-black text-white hover:bg-black/90">
+            <Button type="submit" className="bg-black text-white hover:bg-black/90">
               Continuar →
             </Button>
           </div>

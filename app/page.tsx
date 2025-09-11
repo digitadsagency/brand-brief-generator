@@ -123,12 +123,13 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-6">
           <nav className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <Image 
+              <img 
                 src="/logo-DIGI.png" 
                 alt="Digit Ads Logo" 
-                width={48}
-                height={48}
                 className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
               />
             </div>
             <Button 
@@ -262,12 +263,13 @@ export default function HomePage() {
             {/* Logo y descripción */}
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
-                <Image 
+                <img 
                   src="/logo-DIGI.png" 
                   alt="Digit Ads Logo" 
-                  width={48}
-                  height={48}
                   className="h-12 w-auto object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
               </div>
               <p className="text-gray-300 mb-4">

@@ -15,9 +15,7 @@ export const aboutYouSchema = z.object({
 export const servicesSchema = z.object({
   services: z.array(z.string()).min(1, "Seleccione al menos un servicio"),
   customService: z.string().optional(),
-  hasPrices: z.enum(["yes", "no"], {
-    required_error: "Selecciona una opción para los precios",
-  }),
+  hasPrices: z.enum(["yes", "no"]).optional(),
   prices: z.object({
     service1: z.string().optional(),
     service2: z.string().optional(),
@@ -35,6 +33,12 @@ export const servicesSchema = z.object({
 }, {
   message: "Debe describir su servicio personalizado",
   path: ["customService"]
+}).refine((data) => {
+  // hasPrices es requerido
+  return data.hasPrices !== undefined
+}, {
+  message: "Selecciona una opción para los precios",
+  path: ["hasPrices"]
 })
 
 // Paso 3: A quién quieren ayudar

@@ -13,7 +13,7 @@ export async function createBrandBriefDocument(data: OnboardingData) {
     const copyResponse = await drive.files.copy({
       fileId: templateId,
       requestBody: {
-        name: `Brand Brief - ${data.company} - ${new Date().toLocaleDateString()}`
+        name: `Brand Brief - ${data.basicData.company} - ${new Date().toLocaleDateString()}`
       }
     })
 
@@ -44,33 +44,33 @@ export async function createBrandBriefDocument(data: OnboardingData) {
 async function fillDocumentWithData(documentId: string, data: OnboardingData) {
   const requests = [
     // Reemplazar placeholders con datos reales
-    { replaceAllText: { containsText: '[NOMBRE_EMPRESA]', replaceText: data.company || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[PROYECTO]', replaceText: data.projectName || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[FUNDADORES]', replaceText: data.founders || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[MOTIVACION]', replaceText: data.motivation || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[IDENTIDAD]', replaceText: data.brandIdentity || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[SERVICIOS]', replaceText: data.services?.join(', ') || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[PRECIOS]', replaceText: data.prices || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[PROMOCIONES]', replaceText: data.launchPromotions || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[EDAD]', replaceText: data.clientAge || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[DECISIONES]', replaceText: data.decisionMaker || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[MIEDOS]', replaceText: data.clientFears || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[OBJETIVOS]', replaceText: data.clientGoals || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[ESTILO]', replaceText: data.visualStyle?.join(', ') || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[REDES]', replaceText: data.socialMedia?.join(', ') || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[EVITAR]', replaceText: data.contentToAvoid || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[VIDEOS]', replaceText: data.appearInVideos ? 'Sí' : 'No' } },
-    { replaceAllText: { containsText: '[TIPOS_VIDEO]', replaceText: data.videoTypes?.join(', ') || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[MENSAJES]', replaceText: data.keyMessages || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[DISPONIBILIDAD]', replaceText: data.recordingAvailability || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[TEMAS_EXPLICAR]', replaceText: data.topicsToExplain || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[TEMAS_ABORDAR]', replaceText: data.topicsToAddress || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[INFO_EXISTENTE]', replaceText: data.existingInformation || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[LOGO]', replaceText: data.logoUrl || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[MOODBOARD]', replaceText: data.moodboardUrl || 'Sin especificar' } },
-    { replaceAllText: { containsText: '[REFERENCIAS]', replaceText: data.references || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[NOMBRE_EMPRESA]', replaceText: data.basicData.company || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[PROYECTO]', replaceText: data.basicData.objective || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[FUNDADORES]', replaceText: data.basicData.name || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[MOTIVACION]', replaceText: data.basicData.objective || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[IDENTIDAD]', replaceText: data.basicData.objective || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[SERVICIOS]', replaceText: data.basicData.services?.services?.join(', ') || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[PRECIOS]', replaceText: data.basicData.services?.prices ? JSON.stringify(data.basicData.services.prices) : 'Sin especificar' } },
+    { replaceAllText: { containsText: '[PROMOCIONES]', replaceText: data.basicData.services?.promotionDetails || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[EDAD]', replaceText: data.styleTone.targetAudience?.age || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[DECISIONES]', replaceText: data.styleTone.targetAudience?.decisionMaker || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[MIEDOS]', replaceText: data.styleTone.targetAudience?.fears || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[OBJETIVOS]', replaceText: data.styleTone.targetAudience?.goals || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[ESTILO]', replaceText: data.styleTone.styleTags?.join(', ') || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[REDES]', replaceText: data.brandUsage.channels?.join(', ') || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[EVITAR]', replaceText: data.brandUsage.contentToAvoid || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[VIDEOS]', replaceText: data.brandUsage.appearInVideos ? 'Sí' : 'No' } },
+    { replaceAllText: { containsText: '[TIPOS_VIDEO]', replaceText: data.brandUsage.videoTypes?.join(', ') || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[MENSAJES]', replaceText: data.brandUsage.keyMessages || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[DISPONIBILIDAD]', replaceText: data.brandUsage.recordingAvailability || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[TEMAS_EXPLICAR]', replaceText: data.brandUsage.topicsToExplain || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[TEMAS_ABORDAR]', replaceText: data.brandUsage.topicsToAddress || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[INFO_EXISTENTE]', replaceText: data.brandUsage.existingInformation || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[LOGO]', replaceText: data.visualIdentity.logo || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[MOODBOARD]', replaceText: data.visualIdentity.references?.join(', ') || 'Sin especificar' } },
+    { replaceAllText: { containsText: '[REFERENCIAS]', replaceText: data.visualIdentity.references?.join(', ') || 'Sin especificar' } },
     { replaceAllText: { containsText: '[FECHA]', replaceText: new Date().toLocaleDateString('es-ES') } },
-    { replaceAllText: { containsText: '[EMAIL]', replaceText: data.email || 'Sin especificar' } }
+    { replaceAllText: { containsText: '[EMAIL]', replaceText: data.basicData.email || 'Sin especificar' } }
   ]
 
   await docs.documents.batchUpdate({

@@ -118,7 +118,7 @@ export const SECTORS = [
   { value: "otro", label: "Otro" },
 ] as const
 
-export const STYLE_OPTIONS = [
+export const STYLE_OPTIONS: { value: string; label: string; emoji: string }[] = [
   { value: "elegante", label: "Elegante", emoji: "✨" },
   { value: "minimalista", label: "Minimalista", emoji: "⚪" },
   { value: "vibrante", label: "Vibrante", emoji: "🌈" },
@@ -126,14 +126,14 @@ export const STYLE_OPTIONS = [
   { value: "lujoso", label: "Lujoso", emoji: "💎" },
   { value: "artesanal", label: "Artesanal", emoji: "🎨" },
   { value: "tecnologico", label: "Tecnológico", emoji: "⚡" },
-] as const
+]
 
-export const TONE_OPTIONS = [
+export const TONE_OPTIONS: { value: string; label: string; emoji: string }[] = [
   { value: "formal", label: "Formal", emoji: "🎩" },
   { value: "casual", label: "Casual", emoji: "😎" },
   { value: "creativo", label: "Creativo", emoji: "✨" },
   { value: "cercano", label: "Cercano", emoji: "🤝" },
-] as const
+]
 
 export const CHANNEL_OPTIONS = [
   { value: "web", label: "Sitio Web" },

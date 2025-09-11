@@ -88,7 +88,7 @@ export function OnboardingWizard({ onComplete }: OnboardingWizardProps) {
       case 2:
         return (
           <Step2Services
-            data={formData.services || { services: [], customService: "", hasPromotion: false }}
+            data={formData.services || { services: [], customService: "", hasPrices: "no" as const, hasPromotion: false }}
             onNext={(data) => handleStepComplete({ services: data })}
             onBack={handleBack}
           />

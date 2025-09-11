@@ -1,5 +1,5 @@
 import { docs, drive, auth } from './google-docs'
-import { OnboardingData } from './validations'
+import { OnboardingData } from './schemas'
 
 export async function createBrandBriefDocument(data: OnboardingData) {
   try {

@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { OnboardingWizard } from "@/components/onboarding/OnboardingWizard"
 import { OnboardingData } from "@/lib/validations"
 import { CheckCircle } from "lucide-react"
+import Image from "next/image"
 
 export default function HomePage() {
   const [currentView, setCurrentView] = useState<'landing' | 'onboarding' | 'success'>('landing')
@@ -122,9 +123,11 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-6">
           <nav className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <img 
+              <Image 
                 src="/logo-DIGI.png" 
                 alt="Digit Ads Logo" 
+                width={48}
+                height={48}
                 className="h-12 w-auto object-contain"
               />
             </div>
@@ -259,9 +262,11 @@ export default function HomePage() {
             {/* Logo y descripción */}
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
-                <img 
+                <Image 
                   src="/logo-DIGI.png" 
                   alt="Digit Ads Logo" 
+                  width={48}
+                  height={48}
                   className="h-12 w-auto object-contain"
                 />
               </div>

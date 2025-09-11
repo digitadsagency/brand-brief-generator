@@ -15,8 +15,8 @@ export const aboutYouSchema = z.object({
 export const servicesSchema = z.object({
   services: z.array(z.string()).min(1, "Seleccione al menos un servicio"),
   customService: z.string().optional(),
-  hasPrices: z.enum(["yes", "no"]).optional().refine((val) => val !== undefined, {
-    message: "Selecciona una opción para los precios",
+  hasPrices: z.enum(["yes", "no"], {
+    required_error: "Selecciona una opción para los precios",
   }),
   prices: z.object({
     service1: z.string().optional(),

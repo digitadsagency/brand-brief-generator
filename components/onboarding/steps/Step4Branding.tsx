@@ -85,7 +85,7 @@ export function Step4Branding({ data, onNext, onBack }: Step4BrandingProps) {
               {...register("logoUrl")}
             />
             <p className="text-sm text-gray-500">
-              💡 Sube tu logo a Google Drive, haz clic derecho → "Obtener enlace" → "Cualquier usuario con el enlace"
+              💡 Sube tu logo a Google Drive, haz clic derecho → &quot;Obtener enlace&quot; → &quot;Cualquier usuario con el enlace&quot;
             </p>
           </div>
 
@@ -98,7 +98,7 @@ export function Step4Branding({ data, onNext, onBack }: Step4BrandingProps) {
               {...register("moodboardUrl")}
             />
             <p className="text-sm text-gray-500">
-              💡 Sube tu moodboard a Google Drive, haz clic derecho → "Obtener enlace" → "Cualquier usuario con el enlace"
+              💡 Sube tu moodboard a Google Drive, haz clic derecho → &quot;Obtener enlace&quot; → &quot;Cualquier usuario con el enlace&quot;
             </p>
           </div>
 

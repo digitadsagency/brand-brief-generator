@@ -59,9 +59,11 @@ export function FileDropzone({
 
   const getFileIcon = (file: File) => {
     if (file.type.startsWith("image/")) {
-      return <Image className="w-5 h-5" alt="Imagen" />
+      // eslint-disable-next-line jsx-a11y/alt-text
+      return <Image className="w-5 h-5" />
     }
-    return <File className="w-5 h-5" alt="Archivo" />
+    // eslint-disable-next-line jsx-a11y/alt-text
+    return <File className="w-5 h-5" />
   }
 
   return (

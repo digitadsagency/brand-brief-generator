@@ -33,79 +33,104 @@ export default function HomePage() {
 
   if (currentView === 'success') {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-2xl text-center"
+          className="w-full max-w-4xl text-center"
         >
-          {/* Ícono de éxito */}
+          {/* Ícono de éxito con animación mejorada */}
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 10 }}
+            className="mx-auto w-24 h-24 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mb-8 shadow-2xl"
           >
-            <CheckCircle className="w-10 h-10 text-green-600" />
+            <CheckCircle className="w-12 h-12 text-white" />
           </motion.div>
 
-          {/* Título */}
+          {/* Título principal */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-3xl font-bold text-green-800 mb-4"
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-6"
           >
             ¡Brand Brief Completado!
           </motion.h1>
 
-          {/* Mensaje */}
+          {/* Mensaje principal */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-gray-600 text-lg mb-8 max-w-lg mx-auto"
+            className="text-gray-700 text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Tu Brand Brief ha sido enviado exitosamente a Digit Ads. 
-            Nuestro equipo lo revisará y te contactará pronto para comenzar a trabajar en tu estrategia de marca.
+            Con esto se inicia la experiencia y a llevar tu marca al siguiente nivel. 
+            Tu Brand Brief ha sido enviado exitosamente a Digit Ads.
           </motion.p>
 
-          {/* Próximos pasos */}
+          {/* Próximos pasos con diseño mejorado */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="bg-green-50 p-6 rounded-lg mb-8 max-w-md mx-auto"
+            className="bg-white p-8 rounded-2xl mb-12 max-w-2xl mx-auto shadow-xl border border-gray-100"
           >
-            <h3 className="font-semibold text-green-900 mb-4 text-lg">
-              Próximos pasos con Digit Ads:
-            </h3>
-            <ul className="text-sm text-green-800 space-y-2 text-left">
-              <li>• Nuestro equipo revisará tu Brand Brief en las próximas 24 horas</li>
-              <li>• Te enviaremos un email de confirmación con los próximos pasos</li>
-              <li>• Agendaremos una llamada para discutir tu estrategia de marketing</li>
-              <li>• Comenzaremos a crear campañas personalizadas para tu marca</li>
-            </ul>
+            <div className="flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center mr-4">
+                <span className="text-white font-bold text-lg">✓</span>
+              </div>
+              <h3 className="font-bold text-2xl text-gray-800">
+                Próximos pasos con Digit Ads:
+              </h3>
+            </div>
+            
+            <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-xl">
+              <div className="flex items-start space-x-4">
+                <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-bold">1</span>
+                </div>
+                <p className="text-lg text-gray-700 font-medium">
+                  Nuestro equipo revisará tu Brand Brief en las próximas 24 horas
+                </p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Botones */}
+          {/* Sección de experiencia */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
+            className="bg-gradient-to-r from-black to-gray-800 text-white p-8 rounded-2xl mb-12 max-w-3xl mx-auto"
+          >
+            <h3 className="text-2xl font-bold mb-4">🚀 La experiencia comienza ahora</h3>
+            <p className="text-gray-300 text-lg leading-relaxed">
+              Estás a punto de descubrir el poder de una marca bien definida. 
+              Nuestro equipo de expertos trabajará contigo para transformar tu visión 
+              en una identidad visual que conecte con tu audiencia y impulse tu negocio.
+            </p>
+          </motion.div>
+
+          {/* Botones con diseño mejorado */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button
               onClick={handleStartOver}
               variant="outline"
-              className="border-black text-black hover:bg-black/5 px-6 py-3"
+              className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
             >
               Crear otro Brand Brief
             </Button>
             <Button
               onClick={() => setCurrentView('landing')}
-              className="bg-black text-white hover:bg-black/90 px-6 py-3"
+              className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 shadow-lg"
             >
               Volver al inicio
             </Button>
@@ -152,32 +177,21 @@ export default function HomePage() {
             className="bg-white"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-6">
-              Crea tu
-              <span className="text-blue-600"> Brand Brief</span>
-              <br />
-              con Digit Ads
+              Lleva tu marca al
+              <span className="text-blue-600"> siguiente nivel</span>
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Nuestra herramienta interactiva te ayuda a definir la identidad visual 
-              y de marca de tu empresa. Obtén un documento profesional que nos permitirá 
-              crear estrategias de marketing más efectivas para tu negocio.
+              En Digit Ads sabemos cómo transformar ideas en marcas memorables. Nuestro Brand Brief te ofrece un documento claro, estratégico y hecho con la experiencia de quienes entienden el valor de la comunicación visual y el impacto de una identidad bien definida.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex justify-center mb-12">
               <Button
                 size="lg"
                 onClick={() => setCurrentView('onboarding')}
                 className="text-lg px-8 py-6 bg-black text-white hover:bg-black/90"
               >
                 Comenzar ahora
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-lg px-8 py-6 border-black text-black hover:bg-black/5"
-              >
-                Ver ejemplo
               </Button>
             </div>
           </motion.div>

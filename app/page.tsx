@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,23 +8,55 @@ import { OnboardingWizard } from "@/components/onboarding/OnboardingWizard"
 import { OnboardingData } from "@/lib/validations"
 import { CheckCircle } from "lucide-react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function HomePage() {
   const [currentView, setCurrentView] = useState<'landing' | 'onboarding' | 'success'>('landing')
   const [onboardingData, setOnboardingData] = useState<OnboardingData | null>(null)
+  const router = useRouter()
+
+  // Manejar el historial del navegador
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      // Si el usuario presiona el botón atrás del navegador
+      if (currentView === 'onboarding') {
+        setCurrentView('landing')
+      } else if (currentView === 'success') {
+        setCurrentView('landing')
+      }
+    }
+
+    // Agregar el listener para el evento popstate
+    window.addEventListener('popstate', handlePopState)
+
+    // Limpiar el listener cuando el componente se desmonte
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+    }
+  }, [currentView])
 
   const handleOnboardingComplete = async (data: OnboardingData) => {
     setOnboardingData(data)
     setCurrentView('success')
     
+    // Agregar entrada al historial para la página de éxito
+    window.history.pushState({ view: 'success' }, '', window.location.pathname)
+    
     // Aquí se guardaría en Supabase
     console.log('Onboarding data:', data)
   }
 
+  const handleStartOnboarding = () => {
+    setCurrentView('onboarding')
+    // Agregar entrada al historial para el formulario
+    window.history.pushState({ view: 'onboarding' }, '', window.location.pathname)
+  }
 
   const handleStartOver = () => {
     setCurrentView('landing')
     setOnboardingData(null)
+    // Regresar al historial anterior
+    window.history.back()
   }
 
   if (currentView === 'onboarding') {
@@ -188,7 +220,7 @@ export default function HomePage() {
             <div className="flex justify-center mb-12">
               <Button
                 size="lg"
-                onClick={() => setCurrentView('onboarding')}
+                onClick={handleStartOnboarding}
                 className="text-lg px-8 py-6 bg-black text-white hover:bg-black/90"
               >
                 Comenzar ahora
@@ -260,7 +292,7 @@ export default function HomePage() {
           </p>
           <Button
             size="lg"
-            onClick={() => setCurrentView('onboarding')}
+            onClick={handleStartOnboarding}
             className="text-lg px-8 py-6 bg-black text-white hover:bg-black/90"
           >
             Comenzar Brand Brief

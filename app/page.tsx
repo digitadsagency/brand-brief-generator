@@ -183,8 +183,8 @@ export default function HomePage() {
               <img 
                 src="/logo.png" 
                 alt="Digit Ads Logo" 
-                className="h-12 w-auto object-contain"
-                style={{ width: '48px', height: '48px' }}
+                className="h-16 w-auto object-contain"
+                style={{ width: '64px', height: '64px' }}
               />
             </div>
             <Button 
@@ -310,8 +310,8 @@ export default function HomePage() {
                 <img 
                   src="/logo.png" 
                   alt="Digit Ads Logo" 
-                  className="h-12 w-auto object-contain"
-                  style={{ width: '48px', height: '48px' }}
+                  className="h-16 w-auto object-contain"
+                  style={{ width: '64px', height: '64px' }}
                 />
               </div>
               <p className="text-gray-300 mb-4">
